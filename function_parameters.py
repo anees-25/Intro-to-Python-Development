@@ -18,6 +18,7 @@
 # first_name_initial = get_initial(first_name, False)  # Call the function with the input and 'force_uppercase' set to False
 # print('Your initial is: ' + first_name_initial)  # Print the user's initial
 
+
 # Adding Default Parameter and Using Keyword Arguments for Clarity
 def get_initial(name, force_uppercase=True):  # Define a function with two parameters: 'name' (string) and 'force_uppercase' (boolean, default is True)
     if force_uppercase:  # Check if 'force_uppercase' is True
