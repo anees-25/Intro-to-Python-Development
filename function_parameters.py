@@ -6,6 +6,7 @@
 # first_name_initial = get_initial(first_name)  # Call the function with the input and store the result
 # print('Your initial is: ' + first_name_initial)  # Print the user's initial
 
+
 # Adding a force_uppercase Parameter for Conditional Uppercasing
 # def get_initial(name, force_uppercase= True):  # Define a function with parameters 'name' and 'force_uppercase'
 #     if force_uppercase:  # Check if 'force_uppercase' is True
