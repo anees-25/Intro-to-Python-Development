@@ -8,7 +8,8 @@
 
 
 # Adding a force_uppercase Parameter for Conditional Uppercasing
-# def get_initial(name, force_uppercase= True):  # Define a function with parameters 'name' and 'force_uppercase'
+# def get_initial(name, force_uppercase= True):  # Define a function with parameters 'name' and 'for
+# ce_uppercase'
 #     if force_uppercase:  # Check if 'force_uppercase' is True
 #         initial = name[0:1].upper()  # Extract the first character and convert it to uppercase
 #     else:  # If 'force_uppercase' is False
