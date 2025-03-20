@@ -61,6 +61,15 @@ print("A") if a > b else print("B")  # Output: B
 # Can also have multiple conditions:  
 print("A") if a > b else print("=") if a == b else print("B")  
 
+# Chaining Comparison Operators in Python
+# Chained comparison operators allow multiple conditions to be written in a single expression without using logical operators (and, or). This makes the code cleaner and more readable.
+a = 5
+b = 10
+c = 15
+
+if a < b < c:
+    print("b is between a and c")  # Output: b is between a and c
+
 #### **7. Logical Operators**   
 # Used to combine conditions.  
 # - **And (`and`)**   
