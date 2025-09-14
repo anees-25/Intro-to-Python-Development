@@ -1,161 +1,173 @@
-# Single Inheritance
-# class Person:
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
+"""
+Topic: Inheritance in Python (Single & Multiple)
 
-# class programmer(Person):
-#     def printprogram(self):
-#         return (f"Programmer Name: {self.name} \nage: {self.age}")
-# person3 = programmer("Umer",24)
+Explanation:
+Inheritance is a core concept in Object-Oriented Programming (OOP) that allows a class 
+(called a child or subclass) to inherit properties and behaviors (attributes and methods) 
+from another class (called a parent or superclass). This promotes code reusability and 
+logical organization.
 
-# print(person3.printprogram())
+Single Inheritance: A class inherits from one parent.
+Multiple Inheritance: A class can inherit from two or more classes.
+Method Resolution Order (MRO): Python determines the order in which parent classes 
+   are checked when calling a method or accessing an attribute. The order depends on how 
+   you define the parent classes: `class Child(A, B)` means A is checked before B.
+Constructor Handling: When using multiple inheritance, you must explicitly call 
+   the __init__ methods of parent classes unless using super() with cooperative design.
 
-
-# class Person:
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
-#     def display(self):
-#         print(f"Name: {self.name} \nage: {self.age}")
-# class programmer(Person):
-#     def printprogram(self):
-#         return (f"Programmer Name: {self.name} \nage: {self.age}")
-# person1 = Person("Ahmed", 30)
-# person2 = Person("Ali", 20)
-# person3 = programmer("Umer",24)
-# person1.display()
-# person2.display()
-# print(person3.printprogram())
+Key Takeaways:
+- Use inheritance to avoid repeating code.
+- Be careful with attribute name conflicts in multiple inheritance.
+- Understand MRO to predict behavior in complex hierarchies.
+- Always initialize all required attributes in child classes.
+"""
 
 
-# Multiple inheritance
-# class Person:
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
-#     def person_info(self):
-#         return (f"Person Name: {self.name} \nage: {self.age}")
-# class Student:
-#     def __init__(self, student_id):
-#         self.student_id = student_id
+# ========================================
+# 1. Single Inheritance - Basic Example
+# ========================================
 
-#     def student_info(self):
-#         return f"Student ID: {self.student_id}"
+class Person:
+    """Base class representing a person."""
     
-# class Developer(Person, Student):
-#     pass
-
-# person3 = Developer("Umer",24)
-
-# print(person3.student_info())
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
 
-# class Person:
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
-#     def person_info(self):
-#         return (f"Person Name: {self.name} \nage: {self.age}")
-# class Student:
-#     def __init__(self, student_id):
-#         self.student_id = student_id
-
-#     def student_info(self):
-#         return f"Student ID: {self.student_id}"
+class Programmer(Person):
+    """Child class inheriting from Person."""
     
-# class Developer(Person, Student):
-#     language = "Python"
-#     def print_language(self):
-#         return self.language
-
-# person3 = Developer("Umer",24)
-
-# print(person3.print_language())
+    def print_program(self):
+        return f"Programmer Name: {self.name}\nAge: {self.age}"
 
 
-# Base class
-# class Person:
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
-
-# # Single inheritance class
-# class Programmer(Person):
-#     def printprogram(self):
-#         return f"Programmer Name: {self.name}\nAge: {self.age}"
-
-# # Another class
-# class Student:
-#     def __init__(self, student_id):
-#         self.student_id = student_id
-
-#     def student_info(self):
-#         return f"Student ID: {self.student_id}"
-
-# # Multiple inheritance class
-# class Developer(Programmer, Student):
-#     def __init__(self, name, age, student_id):
-#         Programmer.__init__(self, name, age)
-#         Student.__init__(self, student_id)
-
-#     def display(self):
-#         return f"{self.printprogram()}\n{self.student_info()}"
-
-# # Usage
-# dev = Developer("Umer", 24, "S12345")
-# print(dev.display())
+# Create object
+prog = Programmer("Umer", 24)
+print("=== Single Inheritance ===")
+print(prog.print_program())
 
 
-# class Person:
-#     var = 9
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
-#     def person_info(self):
-#         return (f"Person Name: {self.name} \nage: {self.age}")
-# class Student:
-#     var = 8
-#     def __init__(self, student_id):
-#         self.student_id = student_id
+# ========================================
+# 2. Adding Methods in Parent Class
+# ========================================
 
-#     def student_info(self):
-#         return f"Student ID: {self.student_id}"
+class PersonWithDisplay(Person):
+    """Extended version with display method."""
     
-# class Developer(Person, Student):
-#     language = "Python"
-#     def print_language(self):
-#         return self.language
-
-# person3 = Developer("Umer",24)
-
-# print(person3.var)
+    def display(self):
+        print(f"Name: {self.name}\nAge: {self.age}")
 
 
-# and now we change order of Multiple inheritance then check var
-# class Person:
-#     var = 9
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
-#     def person_info(self):
-#         return (f"Person Name: {self.name} \nage: {self.age}")
-# class Student:
-#     var = 8
-#     def __init__(self, student_id):
-#         self.student_id = student_id
-
-#     def student_info(self):
-#         return f"Student ID: {self.student_id}"
+class ProgrammerEnhanced(PersonWithDisplay):
+    """Uses enhanced Person class."""
     
-# class Developer(Student, Person):
-#     language = "Python"
-#     def print_language(self):
-#         return self.language
+    def print_program(self):
+        return f"Programmer Name: {self.name}\nAge: {self.age}"
 
-# person3 = Developer(24)
 
-# print(person3.var)
-y = "this is string"
-dir(y)
+# Create instances
+person1 = PersonWithDisplay("Ahmed", 30)
+person2 = PersonWithDisplay("Ali", 20)
+prog2 = ProgrammerEnhanced("Umer", 24)
 
+print("\n=== With Display Method ===")
+person1.display()
+person2.display()
+print(prog2.print_program())
+
+
+# ========================================
+# 3. Multiple Inheritance - Simple Case
+# ========================================
+
+class Student:
+    """Represents a student with ID."""
+    
+    def __init__(self, student_id):
+        self.student_id = student_id
+
+    def student_info(self):
+        return f"Student ID: {self.student_id}"
+
+
+class Developer(ProgrammerEnhanced, Student):
+    """Combines Programmer and Student (inherits both)."""
+    
+    language = "Python"
+
+    def print_language(self):
+        return f"Preferred Language: {self.language}"
+
+
+# Note: We haven't initialized Student.__init__ yet → will cause error if used
+# Let's fix that below
+
+
+# ========================================
+# 4. Multiple Inheritance with Proper Init
+# ========================================
+
+class DeveloperFull(Programmer, Student):
+    """
+    Correctly initializes both parent classes.
+    Demonstrates manual constructor chaining.
+    """
+    
+    def __init__(self, name, age, student_id):
+        # Explicitly initialize both parents
+        Programmer.__init__(self, name, age)
+        Student.__init__(self, student_id)
+
+    def display(self):
+        """Combine output from both parents."""
+        return f"{self.print_program()}\n{self.student_info()}"
+
+
+dev = DeveloperFull("Umer", 24, "S12345")
+print("\n=== Multiple Inheritance (Proper Init) ===")
+print(dev.display())
+print(dev.print_language())
+
+
+# ========================================
+# 5. Method Resolution Order (MRO) - Attribute Conflict
+# ========================================
+
+class PersonMRO:
+    var = 9  # Class variable
+    
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+class StudentMRO:
+    var = 8  # Same name → conflict!
+    
+    def __init__(self, student_id):
+        self.student_id = student_id
+
+
+# Case 1: Person first → var = 9
+class DeveloperMRO(PersonMRO, StudentMRO):
+    def get_var(self):
+        return self.var
+
+
+# Case 2: Student first → var = 8
+class DeveloperMROReversed(StudentMRO, PersonMRO):
+    def get_var(self):
+        return self.var
+
+
+dev1 = DeveloperMRO("Ali", 25)
+dev2 = DeveloperMROReversed("Ahmed", 30)
+
+print("\n=== Method Resolution Order (MRO) ===")
+print("DeveloperMRO(Person, Student):", dev1.var)           # Output: 9
+print("DeveloperMROReversed(Student, Person):", dev2.var)   # Output: 8
+
+# Optional: View the search order
+print("MRO for DeveloperMRO:", [cls.__name__ for cls in DeveloperMRO.__mro__])
+print("MRO for DeveloperMROReversed:", [cls.__name__ for cls in DeveloperMROReversed.__mro__])
