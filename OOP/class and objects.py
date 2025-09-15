@@ -5,7 +5,8 @@ This script demonstrates:
 3. The __init__ constructor
 4. Class methods (@classmethod) for alternative constructors
 5. Static methods (@staticmethod)
-6. Real-world examples with Cars and Employees
+6. Method chaining
+7. Real-world examples with Cars and Employees
 
 Each concept is clearly commented for future reference.
 """
@@ -155,3 +156,37 @@ util_car = UtilityCar("Toyota", "2017", "White")
 print("\nStatic Method Demo:")
 print("Car Model:", util_car.model)
 util_car.print_good(" Model")
+
+
+# ========================================
+# 6. Method chaining
+# ========================================
+
+"""
+
+    Demonstrates method chaining where each method returns 'self'
+    so multiple method calls can be combined in a single statement.
+"""
+
+class Animal:
+    def eat(self):
+        print("This is eating an apple")
+        return self  # returning self allows chaining
+
+    def sleep(self):
+        print("This is sleeping")
+        return self  # returning self allows chaining
+
+    def repeat(self):
+        print("This is repeating both")
+        return self  # returning self allows chaining
+
+
+if __name__ == "__main__":
+    rabbit = Animal()
+    # All three methods run in sequence due to chaining
+    rabbit.eat().sleep().repeat()
+# Output
+# This is eating an apple
+# This is sleeping
+# This is repeating both
